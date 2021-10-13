@@ -20,37 +20,69 @@
 
 <div class="flex-container">
   <div class="flex-container">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic0" onclick="check(0)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic1" onclick="check(1)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic2" onclick="check(2)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic3" onclick="check(3)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic4" onclick="check(4)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic5" onclick="check(5)">
   </div>
   <div class="flex-container">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic6" onclick="check(6)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic7" onclick="check(7)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic8" onclick="check(8)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic9" onclick="check(9)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic10" onclick="check(10)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic11" onclick="check(11)">
   </div>
   <div class="flex-container">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic12" onclick="check(12)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic13" onclick="check(13)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic14" onclick="check(14)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic15" onclick="check(15)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic16" onclick="check(16)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic17" onclick="check(17)">
   </div>
   <div class="flex-container">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
-    <img src="tree.jpg" class="img-thumbnail" width="200" height="200">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic18" onclick="check(18)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic19" onclick="check(19)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic20" onclick="check(20)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic21" onclick="check(21)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic22" onclick="check(22)">
+    <img src="tree.jpg" class="img-thumbnail" width="200" height="200" id="pic23" onclick="check(23)">
   </div>
 </div>
+
+<script>
+  let ids=['pic0', 'pic1', 'pic2', 'pic3', 'pic4', 'pic5', 'pic6', 'pic7', 'pic8', 'pic9', 'pic10', 'pic11', 'pic12', 'pic13', 'pic14', 'pic15', 'pic16', 'pic17', 'pic18', 'pic19', 'pic20', 'pic21', 'pic22', 'pic23']
+  triesCount = 0
+  animalLocation = 13
+  
+  function check(position){
+    id = ids[position]
+    imgPos = document.getElementById(id)
+    if (position == animalLocation){
+      imgPos.src = "monkey.jpg"
+    }
+    else{
+      imgPos.src = "hole.jpg"
+    }
+
+    triesCount = triesCount + 1
+    document.getElementById("tries").innerHTML = "Number of tries: " + triesCount
+    distance(position, animalLocation)
+  }
+
+  function distance(pos1, pos2){
+    let distance = 0
+    let xOfAnimal = Math.abs(pos1 % 10 - pos2 % 10)
+    let yOfAnimal = Math.abs(Math.floor(pos1 / 10) - Math.floor(pos2 / 10))
+
+    distanceOfAnimal = Math.max(xOfAnimal, yOfAnimal)
+          
+    document.getElementById("tries").innerHTML = `Number of tries: ${triesCount}`
+    document.getElementById("distance").innerHTML = `Distance: ${distanceOfAnimal}`
+  }
+</script>
 </body>
 </html>
